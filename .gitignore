@@ -5,14 +5,20 @@
 *.sln
 *.zip
 *.pickle
+*.pkl
+
+# 訓練資料和模型（不應上傳到 GitHub）
+dataset/training_data.pkl
+model/knn_model.pkl
 *.sav
 venv/*
 .vs/*
 .vscode/*
-ml_play*.py
-ml/*
-!ml_play_template.py
-!ml_play_manual.py
+# ML 相關檔案（Web 版本需要這些檔案，所以不忽略）
+# ml_play*.py
+# ml/*
+# !ml_play_template.py
+# !ml_play_manual.py
 cmd/
 .idea/
 # Byte-compiled / optimized / DLL files

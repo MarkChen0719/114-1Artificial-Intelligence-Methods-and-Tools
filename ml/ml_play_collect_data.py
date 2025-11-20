@@ -1,4 +1,6 @@
 import math
+import os
+import pickle
 
 
 class MLPlay:
@@ -34,6 +36,24 @@ class MLPlay:
         self.last_dir = "NONE"
         self.last_pos = None  # (x, y)
 
+        # 數據收集相關變量
+        self.data = []  # 本局收集的數據
+        self.all_data = []  # 所有歷史數據
+        self.last_status = "GAME_ALIVE"  # 記錄上一幀的狀態
+        
+        # 資料集路徑
+        self.dataset_dir = "dataset"
+        self.dataset_path = os.path.join(self.dataset_dir, "training_data.pkl")
+        
+        # 如果資料檔已經存在，就先把舊資料載進來
+        if os.path.exists(self.dataset_path):
+            try:
+                with open(self.dataset_path, "rb") as f:
+                    self.all_data = pickle.load(f)
+                print(f"載入既有資料集，共 {len(self.all_data)} 筆資料")
+            except Exception as e:
+                print("載入既有資料失敗，將從空白資料集開始:", e)
+
     # ===== 環境初始化 =====
 
     def _init_env_info(self, scene_info: dict):
@@ -58,6 +78,12 @@ class MLPlay:
         self.center_y = (self.top + self.bottom) / 2
 
     # ===== 小工具 =====
+
+    def get_distance(self, x1, y1, x2, y2):
+        """
+        Calculate the distance between two points
+        """
+        return ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
 
     def _distance(self, x1, y1, x2, y2):
         return math.hypot(x1 - x2, y1 - y2)
@@ -210,11 +236,73 @@ class MLPlay:
 
         return penalty
 
+    def _calculate_four_direction_scores(self, self_x, self_y, objs):
+        """
+        計算四個方位（上、下、左、右）的分數
+        基於策略說明：以魷魚為中心，半徑 R 內搜索，計算各方位分數
+        """
+        directions = ["UP", "DOWN", "LEFT", "RIGHT"]
+        scores = {d: 0.0 for d in directions}
+
+        for obj in objs:
+            obj_x = float(obj["x"])
+            obj_y = float(obj["y"])
+            obj_score = float(obj["score"])  # 食物 > 0，垃圾 < 0
+
+            # 計算物體與魷魚的距離（歐幾里得距離）
+            dx = obj_x - self_x
+            dy = obj_y - self_y
+            dist = self._distance(self_x, self_y, obj_x, obj_y)
+
+            # 只考慮半徑 R 內的物體
+            if dist > self.R:
+                continue
+
+            # 將物體分類到對應的方位
+            direction = self._classify_direction_to_four(dx, dy)
+
+            # 計算距離權重（距離越近權重越大）
+            weight = self._distance_weight(dist, self.food_dist_power)
+
+            # 計算貢獻分數：原始分數 × 距離權重
+            contrib = obj_score * weight
+
+            # 累加到對應方位的分數
+            scores[direction] += contrib
+
+        # 將分數轉換為向量：[上, 下, 左, 右]
+        score_vector = [scores["UP"], scores["DOWN"], scores["LEFT"], scores["RIGHT"]]
+        return score_vector
+
+    def _classify_direction_to_four(self, dx, dy):
+        """
+        將物體分類到 4 個方位之一：上、下、左、右
+        基於物體相對於魷魚的位置
+        """
+        abs_dx = abs(dx)
+        abs_dy = abs(dy)
+
+        if dy < 0:  # 在魷魚上方
+            if abs_dx > abs_dy:
+                return "RIGHT" if dx > 0 else "LEFT"
+            else:
+                return "UP"
+        else:  # 在魷魚下方或同一水平 (dy >= 0)
+            if abs_dx > abs_dy:
+                return "RIGHT" if dx > 0 else "LEFT"
+            else:
+                return "DOWN"
+
     # ===== 主邏輯 =====
 
     def update(self, scene_info: dict, *args, **kwargs):
+        """
+        Generate the command according to the received scene information
+        每一個 frame 會被呼叫一次，可以利用每次傳入的 scene_info，撰寫對應的移動策略
+        """
         status = scene_info.get("status", "GAME_ALIVE")
         if status != "GAME_ALIVE":
+            self.last_status = status
             return "RESET"
 
         self._init_env_info(scene_info)
@@ -244,7 +332,14 @@ class MLPlay:
 
         # 場上沒有任何食物 → 遠離垃圾 + 回中間
         if not foods:
-            return [self._fallback_when_no_food(self_x, self_y, garbages, high_level)]
+            fallback_dir = self._fallback_when_no_food(self_x, self_y, garbages, high_level)
+            # 計算四個方位的分數（用於數據收集，不影響決策邏輯）
+            score_vector = self._calculate_four_direction_scores(self_x, self_y, objs)
+            # 收集訓練資料
+            row = [score_vector[0], score_vector[1], score_vector[2], score_vector[3], fallback_dir]
+            self.data.append(row)
+            self.last_status = status
+            return [fallback_dir]
 
         # ===== 1. 對每一顆食物算「效用」，加入 +4 偏好 =====
         best_food = None
@@ -304,6 +399,12 @@ class MLPlay:
             direction = self._direction_toward_center(self_x, self_y)
             self.last_dir = direction
             self.last_pos = (self_x, self_y)
+            # 計算四個方位的分數（用於數據收集，不影響決策邏輯）
+            score_vector = self._calculate_four_direction_scores(self_x, self_y, objs)
+            # 收集訓練資料
+            row = [score_vector[0], score_vector[1], score_vector[2], score_vector[3], direction]
+            self.data.append(row)
+            self.last_status = status
             return [direction]
 
         # ===== 2. 針對選中的最佳 food，決定方向 =====
@@ -350,6 +451,16 @@ class MLPlay:
 
         self.last_dir = best_dir
         self.last_pos = (self_x, self_y)
+
+        # 計算四個方位的分數（用於數據收集，不影響決策邏輯）
+        score_vector = self._calculate_four_direction_scores(self_x, self_y, objs)
+
+        # 收集訓練資料：score_vector + 動作
+        # score_vector 的索引 0 到 3 對應 [up, down, left, right] 區域的分數
+        row = [score_vector[0], score_vector[1], score_vector[2], score_vector[3], best_dir]
+        self.data.append(row)
+
+        self.last_status = status
 
         return [best_dir]
 
@@ -410,7 +521,30 @@ class MLPlay:
             return safe_dir
 
     def reset(self):
+        """
+        Reset the status
+        遊戲每結束一回合，reset 會被呼叫，如果此回合通過的話會將訓練資料儲存起來
+        """
         print("reset ml script")
+        print(f"本局狀態: {self.last_status}, 本局共收集 {len(self.data)} 筆資料")
+
+        # 如果此回合通過的話會將訓練資料儲存起來
+        if self.last_status == "GAME_PASS":
+            self.all_data.extend(self.data)
+
+            # 確保 dataset 資料夾存在
+            os.makedirs(self.dataset_dir, exist_ok=True)
+
+            # 將資料儲存到 training_data.pkl
+            with open(self.dataset_path, "wb") as f:
+                pickle.dump(self.all_data, f)
+            print(f"Data appended, total {len(self.all_data)} entries saved.")
+        else:
+            print("❌ 沒過關，本局資料丟棄")
+
+        # 清空本局資料
+        self.data.clear()
         self.R = None
         self.last_dir = "NONE"
         self.last_pos = None
+        self.last_status = "GAME_ALIVE"
