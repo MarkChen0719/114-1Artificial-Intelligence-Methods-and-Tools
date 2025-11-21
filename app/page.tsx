@@ -101,8 +101,8 @@ export default function Home() {
               <h3>Contact Information</h3>
               <div className="contact-info">
                 <p>Email: <a href="mailto:113207207@nccu.edu.tw">113207207@nccu.edu.tw</a></p>
-                <p>Location: Taipei, Taiwan</p>
                 <p>個人網站: <a href="https://markchen0719.github.io/my-website/" target="_blank" rel="noopener noreferrer">https://markchen0719.github.io/my-website/</a></p>
+                <p>Location: Taipei, Taiwan</p>
               </div>
             </div>
           </div>
