@@ -41,8 +41,7 @@ export default function Home() {
           <div className="education-content">
             <div className="education-item">
               <p>作者：陳維竣</p>
-              <p>國立政治大學</p>
-              <p>（目前暫定，之後會新增內容）</p>
+              <p>國立政治大學 統計學系二年級</p>
             </div>
           </div>
         </div>
@@ -103,6 +102,7 @@ export default function Home() {
               <div className="contact-info">
                 <p>Email: <a href="mailto:113207207@nccu.edu.tw">113207207@nccu.edu.tw</a></p>
                 <p>Location: Taipei, Taiwan</p>
+                <p>個人網站: <a href="https://markchen0719.github.io/my-website/" target="_blank" rel="noopener noreferrer">https://markchen0719.github.io/my-website/</a></p>
               </div>
             </div>
           </div>
