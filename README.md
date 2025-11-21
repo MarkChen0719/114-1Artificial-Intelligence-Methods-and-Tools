@@ -57,11 +57,29 @@ game = SwimmingSquid(
 
 ### 使用ＡＩ玩遊戲
 
+**直接使用現有策略：**
+
 ```bash
-# 在easy game中，打開終端機
+# 使用模板策略（ml_play_template.py）
+python -m mlgame -i ./ml/ml_play_template.py ./ --level 1
+
+# 使用 collect 策略（ml_play_collect_data.py，包含數據收集功能）
+python -m mlgame -i ./ml/ml_play_collect_data.py ./ --level 1
+
+# 使用 KNN 混合策略（需要先訓練模型，見下方說明）
+python -m mlgame -i ./ml/ml_play_knn.py ./ --level 1
+
+# 指定關卡
 python -m mlgame -i ./ml/ml_play_template.py ./ --level 3
+
+# 使用自定義關卡文件
 python -m mlgame -i ./ml/ml_play_template.py ./ --level_file /path_to_file/level_file.json
 ```
+
+**注意：**
+- `ml_play_template.py` 和 `ml_play_collect_data.py` 可以直接使用，不需要額外數據
+- `ml_play_knn.py` 需要先訓練模型（見下方「使用 KNN 模型」說明）
+- 如果模型不存在，`ml_play_knn.py` 會自動降級為 collect 策略
 
 ### 程式碼結構
 
@@ -382,6 +400,49 @@ python -m mlgame -i ./ml/ml_play_template.py ./ --level_file /path_to_file/level
     - `score`：吃到的食物總數
     - `rank`：排名
     - `passed`：是否通關
+
+---
+
+## 使用 KNN 模型（可選）
+
+如果你想使用 KNN 混合策略（`ml_play_knn.py`），需要先收集數據並訓練模型：
+
+**1. 收集訓練數據**
+
+使用 `ml_play_collect_data.py` 收集數據，這個策略會在通關時自動保存訓練數據：
+
+```bash
+# 收集數據（建議在關卡 14、15 收集，數據質量較好）
+python -m mlgame -i ./ml/ml_play_collect_data.py ./ --level 14
+python -m mlgame -i ./ml/ml_play_collect_data.py ./ --level 15
+```
+
+數據會自動保存到 `dataset/training_data.pkl`。
+
+**2. 檢查數據**
+
+```bash
+python check_data.py
+```
+
+**3. 訓練 KNN 模型**
+
+```bash
+python knn_train.py
+```
+
+模型會保存到 `model/knn_model.pkl`。
+
+**4. 使用訓練好的模型**
+
+```bash
+python -m mlgame -i ./ml/ml_play_knn.py ./ --level 1
+```
+
+**提示：**
+- 數據和模型文件（`.pkl`）不會上傳到 GitHub（已在 `.gitignore` 中）
+- 每個使用者需要自己收集數據和訓練模型
+- 或者直接使用 `ml_play_template.py` 或 `ml_play_collect_data.py`，它們不需要模型
 
 ---
 
