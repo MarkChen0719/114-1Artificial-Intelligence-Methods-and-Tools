@@ -98,14 +98,23 @@ export default function Home() {
         <div className="container">
           <h2>Contact</h2>
           <div className="contact-content">
-            <h3>Contact Information</h3>
-            <div className="contact-info">
-              <p>Email: 113207207@nccu.edu.tw</p>
-              <p>Location: Taipei, Taiwan</p>
+            <div className="contact-card">
+              <h3>Contact Information</h3>
+              <div className="contact-info">
+                <p>Email: <a href="mailto:113207207@nccu.edu.tw">113207207@nccu.edu.tw</a></p>
+                <p>Location: Taipei, Taiwan</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="footer">
+        <div className="container">
+          <p>© 2025 Wei-Jun Chen · Built with Next.js & shadcn/ui</p>
+        </div>
+      </footer>
     </main>
   )
 }
