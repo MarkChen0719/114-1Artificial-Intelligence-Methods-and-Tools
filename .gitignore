@@ -14,7 +14,7 @@ model/knn_model.pkl
 venv/*
 .vs/*
 .vscode/*
-# ML 相關檔案（Web 版本需要這些檔案，所以不忽略）
+# ML 相關檔案
 # ml_play*.py
 # ml/*
 # !ml_play_template.py

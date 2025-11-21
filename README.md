@@ -63,21 +63,131 @@ python -m mlgame -i ./ml/ml_play_template.py ./ --level 3
 python -m mlgame -i ./ml/ml_play_template.py ./ --level_file /path_to_file/level_file.json
 ```
 
+### 程式碼結構
+
+專案的主要程式碼結構如下：
+
+- **`main.py`**：遊戲的主入口，負責初始化遊戲環境並啟動遊戲循環
+- **`ml/ml_play_template.py`**：玩家的自定義 AI 策略文件，玩家需要在此文件中編寫控制魷魚行為的程式碼
+- **`src/`**：包含遊戲的核心邏輯，包括遊戲物件、規則和事件處理等
+- **`asset/`**：存放遊戲所需的資源文件，如圖片、音效等
+
+### 作者的 collect 策略說明
+
+在 `ml/ml_play_collect_data.py` 中實作了一個基於方位評分的策略，核心思路如下：
+
+**基本概念：**
+以魷魚為中心，在一個動態半徑 R 的範圍內搜索所有食物和垃圾。半徑 R 會根據場地大小自動調整，通常是場地短邊的 70% 左右，這樣可以專注在中距離的目標，不會被太遠的食物誤導。
+
+**四個方位評分：**
+先把遊戲區域劃分成四個方位：上、下、左、右。對於半徑 R 內的每個物體，看它相對於魷魚的位置，歸類到對應的方位。然後計算每個方位的總分：
+- 食物的分數是正數（+1、+2、+4），距離越近權重越大
+- 垃圾的分數是負數（-1、-4、-10），距離越近影響越大
+- 用距離權重函數，讓近距離的物體影響更明顯
+
+**食物選擇邏輯：**
+不是單純看方位分數，而是對每個食物單獨計算「效用值」：
+1. **食物吸引力**：食物的分數除以距離的某次方，距離越近吸引力越大
+2. **垃圾威脅**：檢查這顆食物附近是否有垃圾，如果有就扣分。垃圾的威脅會根據距離和分數大小計算，-10 的垃圾特別危險
+3. **+4 偏好**：對分數為 +4 的食物給予額外加成，因為它性價比最高
+4. 選出效用值最高的食物作為目標
+
+**方向決定：**
+選定目標食物後，模擬往四個方向各走一步，看哪個方向能更接近目標。同時考慮：
+- **靠牆懲罰**：如果某個方向會讓魷魚太靠近邊界，就扣分
+- **前方垃圾懲罰**：如果某個方向的前方有垃圾（特別是 -10 的垃圾），會大幅扣分
+- **防抖機制**：如果新方向只比當前方向好一點點（差距小於閾值），就維持當前方向，避免頻繁切換造成抖動
+
+**特殊處理：**
+- 如果場上沒有食物，就遠離垃圾並往場地中心移動
+- 如果所有食物都太遠（超出半徑 R），也往中心移動等待新食物刷新
+- 如果某個方位的總分為 0（沒有任何物體），會設為 -999，避免選擇空區域
+
+這個策略的核心是平衡「追求高價值食物」和「避開危險垃圾」，同時考慮距離、方位和移動效率。實際測試時可以根據不同關卡調整參數，比如在高難度關卡可以加大垃圾威脅的權重。
+
+### 如何編寫自己的策略
+
+要編寫自己的 AI 策略，可以參考以下步驟：
+
+**1. 複製模板文件**
+
+```bash
+# 複製 ml_play_template.py 作為起點
+cp ml/ml_play_template.py ml/ml_play_my_strategy.py
+```
+
+**2. 了解基本結構**
+
+每個策略文件都需要實作一個 `MLPlay` 類，包含三個主要方法：
+
+```python
+class MLPlay:
+    def __init__(self, ai_name, *args, **kwargs):
+        """
+        初始化方法，遊戲開始時會呼叫一次
+        可以在這裡設定變數、載入模型等
+        """
+        print("Initial ml script")
+        # 初始化你的變數
+        self.some_variable = 0
+    
+    def update(self, scene_info: dict, *args, **kwargs):
+        """
+        每一幀都會呼叫這個方法
+        scene_info 包含當前遊戲狀態的所有資訊
+        回傳一個動作字串：["UP"], ["DOWN"], ["LEFT"], ["RIGHT"], 或 ["NONE"]
+        """
+        # 根據 scene_info 決定動作
+        return ["UP"]
+    
+    def reset(self):
+        """
+        遊戲結束時會呼叫，可以用來重置狀態
+        """
+        print("reset ml script")
+        pass
+```
+
+**3. 使用 scene_info**
+
+`scene_info` 是一個字典，包含：
+- `self_x`, `self_y`：魷魚當前位置
+- `self_vel`：魷魚當前速度
+- `self_lv`：魷魚當前等級
+- `foods`：場上所有物體的列表，每個物體有 `x`, `y`, `score`, `type` 等資訊
+- `score`：當前分數
+- `score_to_pass`：通關所需分數
+- `env`：環境參數，包含場地大小、邊界等
+
+**4. 測試策略**
+
+```bash
+# 使用你的策略運行遊戲
+python -m mlgame -i ./ml/ml_play_my_strategy.py ./ --level 1
+```
+
+**5. 迭代優化**
+
+觀察策略的表現，調整參數和邏輯。可以：
+- 調整搜索半徑
+- 改變距離權重
+- 修改垃圾威脅的計算方式
+- 加入更多特殊情況的處理
+
 ### ＡＩ範例
+
+以下是一個簡單的隨機策略範例：
 
 ```python
 import random
 
 class MLPlay:
-    def __init__(self,ai_name,*args, **kwargs):
+    def __init__(self, ai_name, *args, **kwargs):
         print("Initial ml script")
 
-    def update(self, scene_info: dict,,*args, **kwargs):
-
+    def update(self, scene_info: dict, *args, **kwargs):
         # print("AI received data from game :", scene_info)
-
         actions = ["UP", "DOWN", "LEFT", "RIGHT", "NONE"]
-
         return random.sample(actions, 1)
 
     def reset(self):
@@ -87,6 +197,49 @@ class MLPlay:
         print("reset ml script")
         pass
 ```
+
+### 初始化操作說明
+
+**1. 安裝環境**
+
+確保已安裝 Python 3.6 或以上版本，然後安裝必要的依賴：
+
+```bash
+pip install -r requirements.txt
+```
+
+**2. 準備策略文件**
+
+在 `ml/` 目錄下創建或修改你的策略文件。可以：
+- 直接修改 `ml_play_template.py`
+- 或複製它創建新的策略文件
+
+**3. 運行遊戲**
+
+使用 MLGame 框架運行遊戲：
+
+```bash
+# 使用模板策略
+python -m mlgame -i ./ml/ml_play_template.py ./ --level 1
+
+# 使用自定義策略（替換為你的文件名）
+python -m mlgame -i ./ml/ml_play_my_strategy.py ./ --level 1
+
+# 指定關卡
+python -m mlgame -i ./ml/ml_play_template.py ./ --level 3
+
+# 使用自定義關卡文件
+python -m mlgame -i ./ml/ml_play_template.py ./ --level_file /path_to_file/level_file.json
+```
+
+**4. 觀察結果**
+
+遊戲運行時會顯示：
+- 魷魚的移動軌跡
+- 分數變化
+- 遊戲結束時的結果（通過/失敗）
+
+在終端機中可以看到詳細的遊戲資訊和策略的輸出訊息。
 
 ### 遊戲資訊
 
