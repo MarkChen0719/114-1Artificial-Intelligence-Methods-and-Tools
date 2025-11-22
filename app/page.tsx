@@ -78,7 +78,8 @@ export default function Home() {
           <h2>{t.contributor}</h2>
           <div className="education-content">
             <div className="education-item">
-              <p>{t.contributorInfo}</p>
+              <p>{t.contributorName}</p>
+              <p>{t.contributorEducation}</p>
             </div>
           </div>
         </div>

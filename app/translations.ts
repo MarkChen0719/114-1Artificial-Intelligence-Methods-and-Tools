@@ -13,7 +13,8 @@ export const translations = {
     
     // Contributor Section
     contributor: '作者',
-    contributorInfo: '陳維竣 國立政治大學 統計學系學士班',
+    contributorName: '陳維竣',
+    contributorEducation: '教育背景 : 國立政治大學 統計學系學士班',
     
     // Technical Skills Section
     technicalSkills: '用到的技術',
@@ -42,7 +43,8 @@ export const translations = {
     
     // Contributor Section
     contributor: '作者',
-    contributorInfo: '陈维竣 国立政治大学 统计学系学士班',
+    contributorName: '陈维竣',
+    contributorEducation: '教育背景 : 国立政治大学 统计学系学士班',
     
     // Technical Skills Section
     technicalSkills: '用到的技术',
@@ -71,7 +73,8 @@ export const translations = {
     
     // Contributor Section
     contributor: 'Contributor',
-    contributorInfo: 'Wei-Jun Chen, National Chengchi University, B.B.S. in Statistics',
+    contributorName: 'Wei-Jun Chen',
+    contributorEducation: 'Education: National Chengchi University, B.B.S. in Statistics',
     
     // Technical Skills Section
     technicalSkills: 'Technical Skills',
