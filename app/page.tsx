@@ -37,10 +37,10 @@ export default function Home() {
       {/* Author Section */}
       <section className="education">
         <div className="container">
-          <h2>作者</h2>
+          <h2>Contributor</h2>
           <div className="education-content">
             <div className="education-item">
-              <p>Contributor: Wei-Jun Chen, National Chengchi University, B.B.S. in Statistics</p>
+              <p>Wei-Jun Chen, National Chengchi University, B.B.S. in Statistics</p>
             </div>
           </div>
         </div>
