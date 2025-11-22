@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 
-type Language = 'zh-TW' | 'zh-CN'
+type Language = 'zh-TW' | 'zh-CN' | 'en'
 
 interface LanguageSwitcherProps {
   currentLang: Language
@@ -16,6 +16,7 @@ export default function LanguageSwitcher({ currentLang, onLanguageChange }: Lang
   const languages: { code: Language; label: string }[] = [
     { code: 'zh-TW', label: '繁體中文' },
     { code: 'zh-CN', label: '简体中文' },
+    { code: 'en', label: 'English' },
   ]
 
   const currentLanguage = languages.find(lang => lang.code === currentLang) || languages[0]

@@ -56,7 +56,35 @@ export const translations = {
     // Footer
     footer: '© 2025 Wei-Jun Chen · Built with Next.js & shadcn/ui',
   },
+  'en': {
+    // Hero Section
+    heroTitle: 'Swimming Squid Game!',
+    heroDescription: 'This is a puzzle game based on machine learning and SDGs14. We hope that students and children can truly understand AI from the perspective of machine learning, while also recognizing the harm of marine litter to the environment.',
+    learnMore: 'Learn More',
+    viewSource: 'View Source Code',
+    
+    // About Section
+    about: 'About',
+    aboutDescription: 'This is a puzzle game based on machine learning and SDGs14. We hope that students and children can truly understand AI from the perspective of machine learning, while also recognizing the harm of marine litter to the environment.',
+    
+    // Contributor Section
+    contributor: 'Contributor',
+    
+    // Technical Skills Section
+    technicalSkills: 'Technical Skills',
+    
+    // Contact Section
+    contact: 'Contact Us',
+    contactInformation: 'Contact Information',
+    email: 'Email',
+    homepage: 'homepage',
+    location: 'Location',
+    locationValue: 'Taipei, Taiwan',
+    
+    // Footer
+    footer: '© 2025 Wei-Jun Chen · Built with Next.js & shadcn/ui',
+  },
 }
 
-export type Language = 'zh-TW' | 'zh-CN'
+export type Language = 'zh-TW' | 'zh-CN' | 'en'
 

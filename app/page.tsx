@@ -10,7 +10,7 @@ export default function Home() {
   // 從 localStorage 讀取語言設定
   useEffect(() => {
     const savedLang = localStorage.getItem('language') as Language
-    if (savedLang && (savedLang === 'zh-TW' || savedLang === 'zh-CN')) {
+    if (savedLang && (savedLang === 'zh-TW' || savedLang === 'zh-CN' || savedLang === 'en')) {
       setLanguage(savedLang)
       document.documentElement.lang = savedLang
     } else {
