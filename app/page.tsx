@@ -40,8 +40,7 @@ export default function Home() {
           <h2>作者</h2>
           <div className="education-content">
             <div className="education-item">
-              <p>作者：陳維竣</p>
-              <p>國立政治大學 統計學系二年級</p>
+              <p>Contributor: Wei-Jun Chen, National Chengchi University, B.B.S. in Statistics</p>
             </div>
           </div>
         </div>
@@ -50,7 +49,7 @@ export default function Home() {
       {/* Technical Skills Section */}
       <section className="skills">
         <div className="container">
-          <h2>用到的技術</h2>
+          <h2>Technical Skills</h2>
           <div className="skills-grid">
             <div className="skill-category">
               <h3>Frontend</h3>
@@ -101,7 +100,7 @@ export default function Home() {
               <h3>Contact Information</h3>
               <div className="contact-info">
                 <p>Email: <a href="mailto:113207207@nccu.edu.tw">113207207@nccu.edu.tw</a></p>
-                <p>個人網站: <a href="https://markchen0719.github.io/my-website/" target="_blank" rel="noopener noreferrer">https://markchen0719.github.io/my-website/</a></p>
+                <p>homepage: <a href="https://markchen0719.github.io/my-website/" target="_blank" rel="noopener noreferrer">https://markchen0719.github.io/my-website/</a></p>
                 <p>Location: Taipei, Taiwan</p>
               </div>
             </div>
