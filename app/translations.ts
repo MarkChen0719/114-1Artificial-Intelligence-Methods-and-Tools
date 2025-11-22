@@ -1,0 +1,62 @@
+// 翻譯文件
+export const translations = {
+  'zh-TW': {
+    // Hero Section
+    heroTitle: '魷魚遊戲!',
+    heroDescription: '這是一個基於機器學習與 SDGs14 製作的破關小遊戲，我們希望同學們與小朋友們能夠真正地從機器學習的角度認識 AI，與此同時，去認識到海洋垃圾對於環境的危害。',
+    learnMore: '了解更多',
+    viewSource: '查看原始碼',
+    
+    // About Section
+    about: '關於',
+    aboutDescription: '這是一個基於機器學習與 SDGs14 製作的破關小遊戲，我們希望同學們與小朋友們能夠真正地從機器學習的角度認識 AI，與此同時，去認識到海洋垃圾對於環境的危害。',
+    
+    // Contributor Section
+    contributor: 'Contributor',
+    
+    // Technical Skills Section
+    technicalSkills: 'Technical Skills',
+    
+    // Contact Section
+    contact: '聯絡我們',
+    contactInformation: 'Contact Information',
+    email: 'Email',
+    homepage: 'homepage',
+    location: 'Location',
+    locationValue: 'Taipei, Taiwan',
+    
+    // Footer
+    footer: '© 2025 Wei-Jun Chen · Built with Next.js & shadcn/ui',
+  },
+  'zh-CN': {
+    // Hero Section
+    heroTitle: '鱿鱼游戏!',
+    heroDescription: '这是一个基于机器学习与 SDGs14 制作的破关小游戏，我们希望同学们与小朋友们能够真正地从机器学习的角度认识 AI，与此同时，去认识到海洋垃圾对于环境的危害。',
+    learnMore: '了解更多',
+    viewSource: '查看源代码',
+    
+    // About Section
+    about: '关于',
+    aboutDescription: '这是一个基于机器学习与 SDGs14 制作的破关小游戏，我们希望同学们与小朋友们能够真正地从机器学习的角度认识 AI，与此同时，去认识到海洋垃圾对于环境的危害。',
+    
+    // Contributor Section
+    contributor: 'Contributor',
+    
+    // Technical Skills Section
+    technicalSkills: 'Technical Skills',
+    
+    // Contact Section
+    contact: '联系我们',
+    contactInformation: 'Contact Information',
+    email: 'Email',
+    homepage: 'homepage',
+    location: 'Location',
+    locationValue: 'Taipei, Taiwan',
+    
+    // Footer
+    footer: '© 2025 Wei-Jun Chen · Built with Next.js & shadcn/ui',
+  },
+}
+
+export type Language = 'zh-TW' | 'zh-CN'
+

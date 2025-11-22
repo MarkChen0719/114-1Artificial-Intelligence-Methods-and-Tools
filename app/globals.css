@@ -92,6 +92,105 @@ a:hover {
   color: white;
 }
 
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(26, 26, 26, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #2a2a2a;
+  z-index: 1000;
+  padding: 1rem 0;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  color: white;
+  font-weight: 700;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Language Switcher */
+.language-switcher {
+  position: relative;
+}
+
+.language-switcher-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #2a2a2a;
+  border: 1px solid #3a3a3a;
+  border-radius: 6px;
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.language-switcher-button:hover {
+  background-color: #3a3a3a;
+  border-color: #4a4a4a;
+}
+
+.language-switcher-icon {
+  transition: transform 0.3s ease;
+}
+
+.language-switcher-icon.open {
+  transform: rotate(180deg);
+}
+
+.language-switcher-dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  background-color: #2a2a2a;
+  border: 1px solid #3a3a3a;
+  border-radius: 6px;
+  min-width: 150px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+  overflow: hidden;
+}
+
+.language-switcher-option {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: transparent;
+  border: none;
+  color: white;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.language-switcher-option:hover {
+  background-color: #3a3a3a;
+}
+
+.language-switcher-option.active {
+  background-color: #0070f3;
+  color: white;
+}
+
 /* Hero Section */
 .hero {
   min-height: 100vh;
@@ -102,6 +201,7 @@ a:hover {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   padding: 40px 20px;
+  padding-top: 100px; /* 為固定 header 留出空間 */
 }
 
 .hero-content h1 {
@@ -303,6 +403,19 @@ a:hover {
 
 /* Responsive */
 @media (max-width: 768px) {
+  .header-logo h1 {
+    font-size: 1.2rem;
+  }
+
+  .language-switcher-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .hero {
+    padding-top: 80px;
+  }
+
   .hero-content h1 {
     font-size: 2.5rem;
   }
