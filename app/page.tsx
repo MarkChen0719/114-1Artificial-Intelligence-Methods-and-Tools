@@ -78,7 +78,7 @@ export default function Home() {
           <h2>{t.contributor}</h2>
           <div className="education-content">
             <div className="education-item">
-              <p>Wei-Jun Chen, National Chengchi University, B.B.S. in Statistics</p>
+              <p>{t.contributorInfo}</p>
             </div>
           </div>
         </div>
