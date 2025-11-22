@@ -91,7 +91,7 @@ export default function Home() {
           <h2>{t.technicalSkills}</h2>
           <div className="skills-grid">
             <div className="skill-category">
-              <h3>Frontend</h3>
+              <h3>{t.frontend}</h3>
               <div className="skill-tags">
                 <span className="skill-tag">Next.js</span>
                 <span className="skill-tag">React</span>
@@ -99,31 +99,34 @@ export default function Home() {
                 <span className="skill-tag">JavaScript</span>
                 <span className="skill-tag">HTML5</span>
                 <span className="skill-tag">CSS3</span>
-                <span className="skill-tag">shadcn/ui</span>
               </div>
             </div>
             <div className="skill-category">
-              <h3>Backend</h3>
+              <h3>{t.backend}</h3>
               <div className="skill-tags">
                 <span className="skill-tag">Python</span>
                 <span className="skill-tag">MLGame</span>
+                <span className="skill-tag">Pygame</span>
               </div>
             </div>
             <div className="skill-category">
-              <h3>AI_Related</h3>
+              <h3>{t.aiRelated}</h3>
               <div className="skill-tags">
                 <span className="skill-tag">KNN</span>
                 <span className="skill-tag">Machine Learning</span>
                 <span className="skill-tag">Data Collection</span>
+                <span className="skill-tag">scikit-learn</span>
               </div>
             </div>
             <div className="skill-category">
-              <h3>Tools</h3>
+              <h3>{t.tools}</h3>
               <div className="skill-tags">
                 <span className="skill-tag">Git</span>
                 <span className="skill-tag">GitHub</span>
                 <span className="skill-tag">GitHub Pages</span>
                 <span className="skill-tag">GitHub Actions</span>
+                <span className="skill-tag">Docker</span>
+                <span className="skill-tag">Jenkins</span>
               </div>
             </div>
           </div>

@@ -18,6 +18,10 @@ export const translations = {
     
     // Technical Skills Section
     technicalSkills: '用到的技術',
+    frontend: '前端',
+    backend: '後端',
+    aiRelated: 'AI相關',
+    tools: '工具',
     
     // Contact Section
     contact: '聯絡我們',
@@ -48,6 +52,10 @@ export const translations = {
     
     // Technical Skills Section
     technicalSkills: '用到的技术',
+    frontend: '前端',
+    backend: '后端',
+    aiRelated: 'AI相关',
+    tools: '工具',
     
     // Contact Section
     contact: '联系我们',
@@ -78,6 +86,10 @@ export const translations = {
     
     // Technical Skills Section
     technicalSkills: 'Technical Skills',
+    frontend: 'Frontend',
+    backend: 'Backend',
+    aiRelated: 'AI Related',
+    tools: 'Tools',
     
     // Contact Section
     contact: 'Contact Us',
