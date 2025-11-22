@@ -1,23 +1,23 @@
 @echo off
-REM Git Push 腳本 (Windows)
-REM 使用方法: scripts\push.bat "您的提交訊息"
+REM Git Push Script (Windows)
+REM Usage: scripts\push.bat "Your commit message"
 
 if "%~1"=="" (
-    echo 請提供提交訊息
-    echo 使用方法: scripts\push.bat "您的提交訊息"
+    echo Please provide a commit message
+    echo Usage: scripts\push.bat "Your commit message"
     exit /b 1
 )
 
 set COMMIT_MSG=%~1
 
-echo 正在添加所有更改...
+echo Adding all changes...
 git add .
 
-echo 正在提交更改...
+echo Committing changes...
 git commit -m "%COMMIT_MSG%"
 
-echo 正在推送到遠程倉庫...
+echo Pushing to remote repository...
 git push
 
-echo 完成！
+echo Done!
 
