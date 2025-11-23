@@ -120,10 +120,12 @@ a:hover {
 }
 
 .navbar-logo-button {
+  display: inline-block;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
+  text-decoration: none;
 }
 
 .navbar-logo-button h1 {
@@ -142,17 +144,23 @@ a:hover {
 }
 
 .navbar-button {
-  color: #e0e0e0 !important;
-  background-color: transparent !important;
-  border: none !important;
-  padding: 0.5rem 1rem !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #e0e0e0;
+  background-color: transparent;
+  border: none;
+  padding: 0.5rem 1rem;
   font-size: 0.9rem;
+  text-decoration: none;
+  border-radius: 6px;
   transition: color 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
 }
 
 .navbar-button:hover {
-  color: #60a5fa !important;
-  background-color: rgba(96, 165, 250, 0.1) !important;
+  color: #60a5fa;
+  background-color: rgba(96, 165, 250, 0.1);
 }
 
 .navbar-actions {
@@ -185,19 +193,23 @@ a:hover {
 }
 
 .navbar-mobile-button {
+  display: block;
   width: 100%;
   text-align: left;
-  color: #e0e0e0 !important;
-  background-color: transparent !important;
-  border: none !important;
-  padding: 0.75rem 1rem !important;
+  color: #e0e0e0;
+  background-color: transparent;
+  border: none;
+  padding: 0.75rem 1rem;
   font-size: 0.9rem;
+  text-decoration: none;
+  border-radius: 6px;
   transition: color 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
 }
 
 .navbar-mobile-button:hover {
-  color: #60a5fa !important;
-  background-color: rgba(96, 165, 250, 0.1) !important;
+  color: #60a5fa;
+  background-color: rgba(96, 165, 250, 0.1);
 }
 
 /* Tutorial Sections */

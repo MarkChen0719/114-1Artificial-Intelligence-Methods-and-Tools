@@ -75,50 +75,70 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Git Clone Tutorial Section */}
-      <section id="git-clone" className="tutorial-section">
+      {/* Environment Setup Section */}
+      <section id="environment" className="tutorial-section">
         <div className="container">
-          <h2>{t.sectionGitClone}</h2>
+          <h2>{t.sectionEnvironment}</h2>
           <div className="tutorial-content">
             <p>內容待補充...</p>
           </div>
         </div>
       </section>
 
-      {/* Python Installation Section */}
-      <section id="install-python" className="tutorial-section">
+      {/* Manual Control Section */}
+      <section id="manual" className="tutorial-section">
         <div className="container">
-          <h2>{t.sectionInstallPython}</h2>
+          <h2>{t.sectionManual}</h2>
           <div className="tutorial-content">
             <p>內容待補充...</p>
           </div>
         </div>
       </section>
 
-      {/* Virtual Environment Section */}
-      <section id="venv" className="tutorial-section">
+      {/* Collect Data Section */}
+      <section id="collect" className="tutorial-section">
         <div className="container">
-          <h2>{t.sectionVenv}</h2>
+          <h2>{t.sectionCollect}</h2>
           <div className="tutorial-content">
             <p>內容待補充...</p>
           </div>
         </div>
       </section>
 
-      {/* Requirements Installation Section */}
-      <section id="requirements" className="tutorial-section">
+      {/* Train Model Section */}
+      <section id="train" className="tutorial-section">
         <div className="container">
-          <h2>{t.sectionRequirements}</h2>
+          <h2>{t.sectionTrain}</h2>
           <div className="tutorial-content">
             <p>內容待補充...</p>
           </div>
         </div>
       </section>
 
-      {/* How to Run Game Section */}
-      <section id="run-game" className="tutorial-section">
+      {/* Use KNN Model Section */}
+      <section id="knn" className="tutorial-section">
         <div className="container">
-          <h2>{t.sectionRunGame}</h2>
+          <h2>{t.sectionKNN}</h2>
+          <div className="tutorial-content">
+            <p>內容待補充...</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Custom Template Section */}
+      <section id="template" className="tutorial-section">
+        <div className="container">
+          <h2>{t.sectionTemplate}</h2>
+          <div className="tutorial-content">
+            <p>內容待補充...</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Speed Up Section */}
+      <section id="speed" className="tutorial-section">
+        <div className="container">
+          <h2>{t.sectionSpeed}</h2>
           <div className="tutorial-content">
             <p>內容待補充...</p>
           </div>

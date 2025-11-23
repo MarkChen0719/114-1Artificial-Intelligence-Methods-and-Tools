@@ -33,19 +33,23 @@ export const translations = {
     
     // Navigation
     navHome: '首頁',
-    navGitClone: 'Git Clone 教學',
-    navInstallPython: 'Python 安裝教學',
-    navVenv: '建立虛擬環境',
-    navRequirements: '安裝 requirements.txt',
-    navRunGame: '遊戲如何執行',
+    navEnvironment: '環境安裝',
+    navManual: '手動操控',
+    navCollect: '收集資料',
+    navTrain: '訓練模型',
+    navKNN: '使用模型',
+    navTemplate: '自定義模板',
+    navSpeed: '加速遊戲',
     navContact: '聯絡資訊',
     
     // Sections
-    sectionGitClone: 'Git Clone 教學',
-    sectionInstallPython: 'Python 安裝教學',
-    sectionVenv: '建立虛擬環境',
-    sectionRequirements: '安裝 requirements.txt',
-    sectionRunGame: '遊戲如何執行',
+    sectionEnvironment: '環境安裝',
+    sectionManual: '手動操控魷魚',
+    sectionCollect: '收集魷魚移動資料',
+    sectionTrain: '訓練 KNN 模型',
+    sectionKNN: '使用 KNN 模型操控魷魚',
+    sectionTemplate: '執行自定義模板',
+    sectionSpeed: '加速遊戲',
     
     // Footer
     footer: '© 2025 Wei-Jun Chen · Built with Next.js & shadcn/ui',
@@ -83,19 +87,23 @@ export const translations = {
     
     // Navigation
     navHome: '首页',
-    navGitClone: 'Git Clone 教学',
-    navInstallPython: 'Python 安装教学',
-    navVenv: '建立虚拟环境',
-    navRequirements: '安装 requirements.txt',
-    navRunGame: '游戏如何执行',
+    navEnvironment: '环境安装',
+    navManual: '手动操控',
+    navCollect: '收集资料',
+    navTrain: '训练模型',
+    navKNN: '使用模型',
+    navTemplate: '自定义模板',
+    navSpeed: '加速游戏',
     navContact: '联络资讯',
     
     // Sections
-    sectionGitClone: 'Git Clone 教学',
-    sectionInstallPython: 'Python 安装教学',
-    sectionVenv: '建立虚拟环境',
-    sectionRequirements: '安装 requirements.txt',
-    sectionRunGame: '游戏如何执行',
+    sectionEnvironment: '环境安装',
+    sectionManual: '手动操控鱿鱼',
+    sectionCollect: '收集鱿鱼移动资料',
+    sectionTrain: '训练 KNN 模型',
+    sectionKNN: '使用 KNN 模型操控鱿鱼',
+    sectionTemplate: '执行自定义模板',
+    sectionSpeed: '加速游戏',
     
     // Footer
     footer: '© 2025 Wei-Jun Chen · Built with Next.js & shadcn/ui',
@@ -133,19 +141,23 @@ export const translations = {
     
     // Navigation
     navHome: 'Home',
-    navGitClone: 'Git Clone Tutorial',
-    navInstallPython: 'Python Installation',
-    navVenv: 'Virtual Environment',
-    navRequirements: 'Install Requirements',
-    navRunGame: 'How to Run',
+    navEnvironment: 'Environment Setup',
+    navManual: 'Manual Control',
+    navCollect: 'Collect Data',
+    navTrain: 'Train Model',
+    navKNN: 'Use KNN Model',
+    navTemplate: 'Custom Template',
+    navSpeed: 'Speed Up',
     navContact: 'Contact',
     
     // Sections
-    sectionGitClone: 'Git Clone Tutorial',
-    sectionInstallPython: 'Python Installation',
-    sectionVenv: 'Virtual Environment',
-    sectionRequirements: 'Install Requirements',
-    sectionRunGame: 'How to Run',
+    sectionEnvironment: 'Environment Setup',
+    sectionManual: 'Manual Control',
+    sectionCollect: 'Collect Movement Data',
+    sectionTrain: 'Train KNN Model',
+    sectionKNN: 'Use KNN Model',
+    sectionTemplate: 'Custom Template',
+    sectionSpeed: 'Speed Up Game',
     
     // Footer
     footer: '© 2025 Wei-Jun Chen · Built with Next.js & shadcn/ui',

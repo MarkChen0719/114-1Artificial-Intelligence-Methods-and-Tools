@@ -14,28 +14,21 @@ export default function Header({ currentLang, onLanguageChange }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const t = translations[currentLang]
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id)
-    if (element) {
-      const headerOffset = 80
-      const elementPosition = element.getBoundingClientRect().top
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      })
-    }
+  const handleNavClick = (id: string) => {
     setIsMenuOpen(false)
+    // 使用錨點連結，讓瀏覽器自然處理滾動
+    window.location.hash = id
   }
 
   const navItems = [
     { id: 'home', label: t.navHome || '首頁' },
-    { id: 'git-clone', label: t.navGitClone || 'Git Clone 教學' },
-    { id: 'install-python', label: t.navInstallPython || 'Python 安裝教學' },
-    { id: 'venv', label: t.navVenv || '建立虛擬環境' },
-    { id: 'requirements', label: t.navRequirements || '安裝 requirements.txt' },
-    { id: 'run-game', label: t.navRunGame || '遊戲如何執行' },
+    { id: 'environment', label: t.navEnvironment || '環境安裝' },
+    { id: 'manual', label: t.navManual || '手動操控' },
+    { id: 'collect', label: t.navCollect || '收集資料' },
+    { id: 'train', label: t.navTrain || '訓練模型' },
+    { id: 'knn', label: t.navKNN || '使用模型' },
+    { id: 'template', label: t.navTemplate || '自定義模板' },
+    { id: 'speed', label: t.navSpeed || '加速遊戲' },
     { id: 'contact', label: t.navContact || '聯絡資訊' },
   ]
 
@@ -44,26 +37,25 @@ export default function Header({ currentLang, onLanguageChange }: HeaderProps) {
       <div className="container">
         <div className="navbar-content">
           <div className="navbar-logo">
-            <button
-              onClick={() => scrollToSection('home')}
+            <a
+              href="#home"
               className="navbar-logo-button"
             >
               <h1>魷魚遊戲</h1>
-            </button>
+            </a>
           </div>
           
           {/* Desktop Navigation */}
           <nav className="navbar-nav">
             {navItems.map((item) => (
-              <Button
+              <a
                 key={item.id}
-                variant="ghost"
-                size="sm"
-                onClick={() => scrollToSection(item.id)}
+                href={`#${item.id}`}
                 className="navbar-button"
+                onClick={() => handleNavClick(item.id)}
               >
                 {item.label}
-              </Button>
+              </a>
             ))}
           </nav>
 
@@ -107,15 +99,14 @@ export default function Header({ currentLang, onLanguageChange }: HeaderProps) {
         {isMenuOpen && (
           <nav className="navbar-mobile">
             {navItems.map((item) => (
-              <Button
+              <a
                 key={item.id}
-                variant="ghost"
-                size="default"
-                onClick={() => scrollToSection(item.id)}
+                href={`#${item.id}`}
                 className="navbar-mobile-button"
+                onClick={() => handleNavClick(item.id)}
               >
                 {item.label}
-              </Button>
+              </a>
             ))}
           </nav>
         )}
