@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 // 在 GitHub Actions 或 production 環境中使用 basePath
-const isProd = process.env.NODE_ENV === 'production' || process.env.GITHUB_ACTIONS === 'true'
+const isProd = process.env.NODE_ENV === 'production' || process.env.GITHUB_ACTIONS === 'true' || process.env.CI === 'true'
 const basePath = isProd ? '/114-1Artificial-Intelligence-Methods-and-Tools' : ''
 
 const nextConfig = {
