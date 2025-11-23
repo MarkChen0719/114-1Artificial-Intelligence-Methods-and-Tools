@@ -121,7 +121,7 @@ export default function Home() {
               <div className="code-block">
                 <code>{t.gitCloneCommand}</code>
               </div>
-              <p>{t.gitCloneExample}</p>
+              <p>{t.gitCloneCommandExample}</p>
               <div className="code-block">
                 <code>git clone https://github.com/MarkChen0719/114-1Artificial-Intelligence-Methods-and-Tools.git</code>
               </div>
