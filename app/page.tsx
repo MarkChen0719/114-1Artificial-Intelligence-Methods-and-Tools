@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import LanguageSwitcher from './components/LanguageSwitcher'
+import Header from './components/Header'
 import { translations, type Language } from './translations'
 
 export default function Home() {
@@ -30,21 +30,11 @@ export default function Home() {
 
   return (
     <main>
-      {/* Header with Language Switcher */}
-      <header className="header">
-        <div className="container">
-          <div className="header-content">
-            <div className="header-logo">
-              <h1>魷魚遊戲</h1>
-            </div>
-            <div className="header-actions">
-              <LanguageSwitcher currentLang={language} onLanguageChange={handleLanguageChange} />
-            </div>
-          </div>
-        </div>
-      </header>
+      {/* Header with Navigation */}
+      <Header currentLang={language} onLanguageChange={handleLanguageChange} />
+      
       {/* Hero Section */}
-      <section className="hero">
+      <section id="home" className="hero">
         <div className="container">
           <div className="hero-content">
             <h1>{t.heroTitle}</h1>
@@ -81,6 +71,56 @@ export default function Home() {
               <p>{t.contributorName}</p>
               <p>{t.contributorEducation}</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Git Clone Tutorial Section */}
+      <section id="git-clone" className="tutorial-section">
+        <div className="container">
+          <h2>{t.sectionGitClone}</h2>
+          <div className="tutorial-content">
+            <p>內容待補充...</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Python Installation Section */}
+      <section id="install-python" className="tutorial-section">
+        <div className="container">
+          <h2>{t.sectionInstallPython}</h2>
+          <div className="tutorial-content">
+            <p>內容待補充...</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Virtual Environment Section */}
+      <section id="venv" className="tutorial-section">
+        <div className="container">
+          <h2>{t.sectionVenv}</h2>
+          <div className="tutorial-content">
+            <p>內容待補充...</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Requirements Installation Section */}
+      <section id="requirements" className="tutorial-section">
+        <div className="container">
+          <h2>{t.sectionRequirements}</h2>
+          <div className="tutorial-content">
+            <p>內容待補充...</p>
+          </div>
+        </div>
+      </section>
+
+      {/* How to Run Game Section */}
+      <section id="run-game" className="tutorial-section">
+        <div className="container">
+          <h2>{t.sectionRunGame}</h2>
+          <div className="tutorial-content">
+            <p>內容待補充...</p>
           </div>
         </div>
       </section>

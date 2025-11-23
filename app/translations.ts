@@ -31,6 +31,22 @@ export const translations = {
     location: '所在地',
     locationValue: '臺北, 臺灣',
     
+    // Navigation
+    navHome: '首頁',
+    navGitClone: 'Git Clone 教學',
+    navInstallPython: 'Python 安裝教學',
+    navVenv: '建立虛擬環境',
+    navRequirements: '安裝 requirements.txt',
+    navRunGame: '遊戲如何執行',
+    navContact: '聯絡資訊',
+    
+    // Sections
+    sectionGitClone: 'Git Clone 教學',
+    sectionInstallPython: 'Python 安裝教學',
+    sectionVenv: '建立虛擬環境',
+    sectionRequirements: '安裝 requirements.txt',
+    sectionRunGame: '遊戲如何執行',
+    
     // Footer
     footer: '© 2025 Wei-Jun Chen · Built with Next.js & shadcn/ui',
   },
@@ -65,6 +81,22 @@ export const translations = {
     location: '所在地',
     locationValue: '台北, 台湾',
     
+    // Navigation
+    navHome: '首页',
+    navGitClone: 'Git Clone 教学',
+    navInstallPython: 'Python 安装教学',
+    navVenv: '建立虚拟环境',
+    navRequirements: '安装 requirements.txt',
+    navRunGame: '游戏如何执行',
+    navContact: '联络资讯',
+    
+    // Sections
+    sectionGitClone: 'Git Clone 教学',
+    sectionInstallPython: 'Python 安装教学',
+    sectionVenv: '建立虚拟环境',
+    sectionRequirements: '安装 requirements.txt',
+    sectionRunGame: '游戏如何执行',
+    
     // Footer
     footer: '© 2025 Wei-Jun Chen · Built with Next.js & shadcn/ui',
   },
@@ -98,6 +130,22 @@ export const translations = {
     homepage: 'homepage',
     location: 'Location',
     locationValue: 'Taipei, Taiwan',
+    
+    // Navigation
+    navHome: 'Home',
+    navGitClone: 'Git Clone Tutorial',
+    navInstallPython: 'Python Installation',
+    navVenv: 'Virtual Environment',
+    navRequirements: 'Install Requirements',
+    navRunGame: 'How to Run',
+    navContact: 'Contact',
+    
+    // Sections
+    sectionGitClone: 'Git Clone Tutorial',
+    sectionInstallPython: 'Python Installation',
+    sectionVenv: 'Virtual Environment',
+    sectionRequirements: 'Install Requirements',
+    sectionRunGame: 'How to Run',
     
     // Footer
     footer: '© 2025 Wei-Jun Chen · Built with Next.js & shadcn/ui',
