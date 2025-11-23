@@ -30,6 +30,11 @@ jobs:
         with:
           node-version: '20'
       - run: npm install
+      - name: Debug environment variables
+        run: |
+          echo "NODE_ENV: $NODE_ENV"
+          echo "GITHUB_ACTIONS: $GITHUB_ACTIONS"
+          echo "CI: $CI"
       - run: npm run build
       - uses: actions/configure-pages@v4
       - uses: actions/upload-pages-artifact@v3
