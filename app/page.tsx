@@ -139,7 +139,10 @@ export default function Home() {
         <div className="container">
           <h2>{t.sectionManual}</h2>
           <div className="tutorial-content">
-            <p>內容待補充...</p>
+            <p>{t.manualDesc}</p>
+            <div className="code-block">
+              <code>{t.manualCommand}</code>
+            </div>
           </div>
         </div>
       </section>
@@ -149,7 +152,10 @@ export default function Home() {
         <div className="container">
           <h2>{t.sectionCollect}</h2>
           <div className="tutorial-content">
-            <p>內容待補充...</p>
+            <p>{t.collectDesc}</p>
+            <div className="code-block">
+              <code>{t.collectCommand}</code>
+            </div>
           </div>
         </div>
       </section>
@@ -159,7 +165,10 @@ export default function Home() {
         <div className="container">
           <h2>{t.sectionTrain}</h2>
           <div className="tutorial-content">
-            <p>內容待補充...</p>
+            <p>{t.trainDesc}</p>
+            <div className="code-block">
+              <code>{t.trainCommand}</code>
+            </div>
           </div>
         </div>
       </section>
@@ -169,7 +178,10 @@ export default function Home() {
         <div className="container">
           <h2>{t.sectionKNN}</h2>
           <div className="tutorial-content">
-            <p>內容待補充...</p>
+            <p>{t.knnDesc}</p>
+            <div className="code-block">
+              <code>{t.knnCommand}</code>
+            </div>
           </div>
         </div>
       </section>
@@ -179,7 +191,10 @@ export default function Home() {
         <div className="container">
           <h2>{t.sectionTemplate}</h2>
           <div className="tutorial-content">
-            <p>內容待補充...</p>
+            <p>{t.templateDesc}</p>
+            <div className="code-block">
+              <code>{t.templateCommand}</code>
+            </div>
           </div>
         </div>
       </section>
@@ -189,7 +204,11 @@ export default function Home() {
         <div className="container">
           <h2>{t.sectionSpeed}</h2>
           <div className="tutorial-content">
-            <p>內容待補充...</p>
+            <p>{t.speedDesc}</p>
+            <div className="code-block">
+              <code>{t.speedCommand}</code>
+            </div>
+            <p>{t.speedNote}</p>
           </div>
         </div>
       </section>
