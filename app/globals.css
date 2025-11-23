@@ -235,6 +235,48 @@ a:hover {
   color: #e0e0e0;
   font-size: 1.1rem;
   line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.tutorial-step {
+  margin-bottom: 2.5rem;
+}
+
+.tutorial-step:last-child {
+  margin-bottom: 0;
+}
+
+.tutorial-step h3 {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+
+.tutorial-link {
+  color: #60a5fa;
+  text-decoration: underline;
+  word-break: break-all;
+}
+
+.tutorial-link:hover {
+  color: #93c5fd;
+}
+
+.code-block {
+  background-color: #1a1a1a;
+  border: 1px solid #3a3a3a;
+  border-radius: 6px;
+  padding: 1rem;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.code-block code {
+  color: #60a5fa;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+  white-space: pre;
 }
 
 /* Language Switcher */

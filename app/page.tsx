@@ -80,7 +80,56 @@ export default function Home() {
         <div className="container">
           <h2>{t.sectionEnvironment}</h2>
           <div className="tutorial-content">
-            <p>內容待補充...</p>
+            <div className="tutorial-step">
+              <h3>{t.gitInstallTitle}</h3>
+              <p>{t.gitInstallDesc}</p>
+              <p>
+                <a href={t.gitInstallLink} target="_blank" rel="noopener noreferrer" className="tutorial-link">
+                  👉 {t.gitInstallLink}
+                </a>
+              </p>
+              <p>{t.gitInstallCheck}</p>
+              <div className="code-block">
+                <code>{t.gitInstallCommand}</code>
+              </div>
+              <p>{t.gitInstallSuccess}</p>
+            </div>
+
+            <div className="tutorial-step">
+              <h3>{t.gitCloneTitle}</h3>
+              <p>{t.gitCloneExample}</p>
+              <p>
+                <a href="https://github.com/MarkChen0719/114-1Artificial-Intelligence-Methods-and-Tools" target="_blank" rel="noopener noreferrer" className="tutorial-link">
+                  https://github.com/MarkChen0719/114-1Artificial-Intelligence-Methods-and-Tools
+                </a>
+              </p>
+              <p>{t.gitCloneSteps}</p>
+            </div>
+
+            <div className="tutorial-step">
+              <h3>{t.gitCloneFolderTitle}</h3>
+              <p>{t.gitCloneFolderExample}</p>
+              <div className="code-block">
+                <code>{t.gitCloneFolderPath}</code>
+              </div>
+              <p>{t.gitCloneFolderAction}</p>
+            </div>
+
+            <div className="tutorial-step">
+              <h3>{t.gitCloneCommandTitle}</h3>
+              <p>{t.gitCloneCommandDesc}</p>
+              <div className="code-block">
+                <code>{t.gitCloneCommand}</code>
+              </div>
+              <p>{t.gitCloneExample}</p>
+              <div className="code-block">
+                <code>git clone https://github.com/MarkChen0719/114-1Artificial-Intelligence-Methods-and-Tools.git</code>
+              </div>
+              <p>{t.gitCloneResult}</p>
+              <div className="code-block">
+                <code>114-1Artificial-Intelligence-Methods-and-Tools/</code>
+              </div>
+            </div>
           </div>
         </div>
       </section>
