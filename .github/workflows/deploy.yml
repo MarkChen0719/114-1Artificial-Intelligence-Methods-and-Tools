@@ -29,6 +29,9 @@ jobs:
       - run: npm run build
         env:
           NODE_ENV: production
+          GITHUB_ACTIONS: 'true'
+      - name: Create .nojekyll file
+        run: touch ./out/.nojekyll
       - uses: actions/configure-pages@v4
       - uses: actions/upload-pages-artifact@v3
         with:
