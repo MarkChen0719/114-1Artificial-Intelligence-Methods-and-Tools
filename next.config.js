@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 // 在 GitHub Actions 或 production 環境中使用 basePath
-// 檢查環境變數，預設為 production（用於 GitHub Pages 部署）
-const isDev = process.env.NODE_ENV === 'development'
-// 如果不是開發環境，則使用 basePath
-const basePath = isDev ? '' : '/114-1Artificial-Intelligence-Methods-and-Tools'
+const isProd = process.env.NODE_ENV === 'production' || process.env.GITHUB_ACTIONS === 'true'
+const basePath = isProd ? '/114-1Artificial-Intelligence-Methods-and-Tools' : ''
 
 const nextConfig = {
   output: 'export',
